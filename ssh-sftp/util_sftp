@@ -1,0 +1,14 @@
+# welcome sftp -vvv 
+
+#sftp no security no check Know-Hosts, exemple:
+sftp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no user@dst
+
+#sftp mac, exemple:
+sftp -o MACs=hmac-sha2-512 user@dst
+
+#setting SO var id_rsa and usually exemple: SET RSA=local:/my_id_rsa_pub , export RSA=.../.ssh/my_id_rsa_pub
+sftp -i %RSA% user@dst
+
+#export SSHPASS=your-password-here
+SSHPASS -e sftp -oBatchMode=no user@dst
+
